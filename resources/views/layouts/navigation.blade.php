@@ -15,7 +15,11 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                        {{ __('Dados pessoais') }}
+                    </x-nav-link>
                 </div>
+
             </div>
 
             <!-- Settings Dropdown -->
@@ -33,7 +37,14 @@
                         </button>
                     </x-slot>
 
+                    <!-- teria que mudar a rota aqui, de log out para dados-->
                     <x-slot name="content">
+                    <x-dropdown-link :href="route('logout')"
+                                    onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                                {{ __('Dados') }}
+                            </x-dropdown-link>
+
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
